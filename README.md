@@ -26,10 +26,18 @@ This is a complete Employee Attendance Management System developed using Spring 
 
 ## Setup Instructions
 
-### Prerequisites
-1. Java Development Kit (JDK) 17 or higher.
-2. Maven.
-3. MySQL Server running locally.
+### Local Development (If you want to clone this project)
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/RajKiranAcharyya/iec-attendance-portal.git
+   cd iec-attendance-portal
+   ```
+
+2. **Prerequisites:**
+   - Java Development Kit (JDK) 17 or higher.
+   - Maven.
+   - MySQL Server running locally.
 
 ### Database Setup
 1. The application is configured to automatically create the database `attendance_db` and all necessary tables when it runs. 
