@@ -36,7 +36,7 @@ https://github.com/user-attachments/assets/demo.webp
 3. (Optional) A `database_schema.sql` file is provided in the root directory if you wish to run the table creations manually.
 
 ### Database Schema Screenshot
-![Database Structure Screenshot](db-screenshot.png)
+![Database Structure Screenshot](image.png)
 
 ### Running the Application
 1. Open a terminal or command prompt in the project root directory (`IEC_Project`).
