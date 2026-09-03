@@ -8,9 +8,10 @@ if (loginForm) {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
         const errorElem = document.getElementById('login-error');
-        const btn = loginForm.querySelector('button[type="submit"]');
+        const btn = document.getElementById('login-btn');
         const originalText = btn.innerText;
         btn.innerText = 'Logging in...';
+        btn.style.opacity = '0.5';
         btn.disabled = true;
         
         try {
@@ -35,6 +36,7 @@ if (loginForm) {
             errorElem.innerText = 'Server error';
         } finally {
             btn.innerText = originalText;
+            btn.style.opacity = '1';
             btn.disabled = false;
         }
     });
@@ -50,9 +52,10 @@ if (registerForm) {
         const role = document.getElementById('reg-role').value;
         const errorElem = document.getElementById('reg-error');
         const successElem = document.getElementById('reg-success');
-        const btn = registerForm.querySelector('button[type="submit"]');
+        const btn = document.getElementById('reg-btn');
         const originalText = btn.innerText;
         btn.innerText = 'Registering...';
+        btn.style.opacity = '0.5';
         btn.disabled = true;
         
         try {
@@ -75,6 +78,7 @@ if (registerForm) {
             errorElem.innerText = 'Server error';
         } finally {
             btn.innerText = originalText;
+            btn.style.opacity = '1';
             btn.disabled = false;
         }
     });
