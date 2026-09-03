@@ -1,6 +1,6 @@
 const API_URL = '/api';
 
-// --- Auth logic ---
+// Auth logic
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
@@ -72,7 +72,7 @@ function logout() {
     window.location.href = 'index.html';
 }
 
-// --- Employee Dashboard Logic ---
+// Employee Dashboard Logic
 async function loadEmployeeData(userId) {
     // Load attendance
     try {
@@ -178,7 +178,7 @@ if (leaveForm) {
     });
 }
 
-// --- HR Dashboard Logic ---
+// HR Dashboard Logic
 async function loadHRData() {
     const user = JSON.parse(localStorage.getItem('user'));
     const headers = { 'X-User-Id': user.id };
