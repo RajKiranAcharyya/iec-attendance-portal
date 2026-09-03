@@ -6,8 +6,6 @@ This is a complete Employee Attendance Management System developed using Spring 
 
 **Live URL:** https://iec-attendance-portal-production.up.railway.app
 
-https://github.com/user-attachments/assets/demo.webp
-
 > A full walkthrough showing Employee Registration, Login, Check-In/Check-Out, Leave Application, HR Dashboard, and Leave Approval.
 
 ## Features
