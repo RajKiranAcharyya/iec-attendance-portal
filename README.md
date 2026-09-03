@@ -32,7 +32,7 @@ https://github.com/user-attachments/assets/demo.webp
 
 ### Database Setup
 1. The application is configured to automatically create the database `attendance_db` and all necessary tables when it runs. 
-2. Ensure your MySQL server is running with the username `root123` and password `rajmysql123@@`. If your credentials differ, update the `src/main/resources/application.properties` file.
+2. Update the `src/main/resources/application.properties` file with your local MySQL database credentials (username and password).
 3. (Optional) A `database_schema.sql` file is provided in the root directory if you wish to run the table creations manually.
 
 ### Database Schema Screenshot
