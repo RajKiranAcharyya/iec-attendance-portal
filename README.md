@@ -2,6 +2,12 @@
 
 This is a complete Employee Attendance Management System developed using Spring Boot for the backend and plain HTML, CSS, and Vanilla JavaScript for the frontend.
 
+## Demo
+
+https://github.com/user-attachments/assets/demo.webp
+
+> A full walkthrough showing Employee Registration, Login, Check-In/Check-Out, Leave Application, HR Dashboard, and Leave Approval.
+
 ## Features
 - **Employee Login & Registration:** Simple authentication and authorization (Employee / HR).
 - **Attendance Check-In / Check-Out:** Employees can mark their attendance daily.
