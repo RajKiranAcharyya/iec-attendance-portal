@@ -10,14 +10,16 @@ https://github.com/user-attachments/assets/demo.webp
 
 ## Features
 - **Employee Login & Registration:** Simple authentication and authorization (Employee / HR).
+- **Security & Authorization:** BCrypt Password Hashing, `@Transactional` thread safety, and API Role-Based Authorization headers.
 - **Attendance Check-In / Check-Out:** Employees can mark their attendance daily.
 - **Working Hours Calculation:** Calculates hours worked upon check-out.
 - **Leave Deduction Calculation:** Leave requests automatically deduct from the employee's balance when approved by HR.
 - **HR Dashboard:** View all employees, their attendance logs, and process pending leave requests.
 - **Employee Dashboard:** View own attendance history, available leave balance, and leave request statuses.
+- **Modern UI/UX:** Clean, responsive, glassmorphic UI built purely with modern CSS.
 
 ## Tech Stack
-- **Backend:** Java, Spring Boot, Spring Data JPA.
+- **Backend:** Java, Spring Boot, Spring Security, Spring Data JPA.
 - **Frontend:** HTML, CSS, Vanilla JavaScript (No React/Angular/Vue).
 - **Database:** MySQL.
 
@@ -30,8 +32,11 @@ https://github.com/user-attachments/assets/demo.webp
 
 ### Database Setup
 1. The application is configured to automatically create the database `attendance_db` and all necessary tables when it runs. 
-2. Ensure your MySQL server is running with the username `root` and password `root`. If your credentials differ, update the `src/main/resources/application.properties` file.
+2. Ensure your MySQL server is running with the username `root123` and password `rajmysql123@@`. If your credentials differ, update the `src/main/resources/application.properties` file.
 3. (Optional) A `database_schema.sql` file is provided in the root directory if you wish to run the table creations manually.
+
+### Database Schema Screenshot
+![Database Structure Screenshot](db-screenshot.png)
 
 ### Running the Application
 1. Open a terminal or command prompt in the project root directory (`IEC_Project`).
