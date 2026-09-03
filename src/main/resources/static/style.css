@@ -1,112 +1,163 @@
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #f4f4f4;
+    background-color: #f0f4f8;
     /* background-color: red; */
     margin: 0;
-    padding: 20px;
+    padding: 30px;
+    color: #333;
 }
 
 .container {
     max-width: 1000px;
     margin: 0 auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 h1, h2, h3 {
-    color: #333;
+    color: #1a365d;
+    margin-top: 0;
 }
 
 #auth-forms {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     justify-content: space-between;
 }
 
 .form-box {
     flex: 1;
-    background: #f9f9f9;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    background: #f8fafc;
+    padding: 25px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #4a5568;
 }
 
 .form-group input, .form-group select {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
+    padding: 10px;
+    border: 1px solid #cbd5e0;
     border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #3182ce;
 }
 
 button {
-    background: #007bff;
+    background: #3182ce;
     color: #fff;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
     cursor: pointer;
     border-radius: 4px;
+    transition: background 0.2s;
 }
 
 button:hover {
-    background: #0056b3;
+    background: #2b6cb0;
 }
 
 .error {
-    color: red;
+    color: #e53e3e;
     font-size: 14px;
+    margin-top: 10px;
 }
 
 .success {
-    color: green;
+    color: #38a169;
     font-size: 14px;
+    margin-top: 10px;
 }
 
 .dashboard-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
+    font-size: 14px;
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #e2e8f0;
 }
 
 th, td {
-    padding: 10px;
+    padding: 12px 15px;
     text-align: left;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #ebf8ff;
+    color: #2c5282;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
 }
 
 .panel {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+/* Simple status badges */
+.status-PENDING {
+    background: #fefcbf;
+    color: #b7791f;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.status-APPROVED {
+    background: #c6f6d5;
+    color: #22543d;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.status-REJECTED {
+    background: #fed7d7;
+    color: #742a2a;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
 }
