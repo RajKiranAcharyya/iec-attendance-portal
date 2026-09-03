@@ -53,8 +53,3 @@ https://github.com/user-attachments/assets/demo.webp
 ### Usage
 - Register a new account as an "Employee" to test check-in, check-out, and applying for leaves.
 - Register another account as "HR" to view employee data, view all attendance records, and approve/reject leave requests.
-
-## Assessment Constraints Followed
-- **No JS Frameworks:** Strictly uses Vanilla JS, standard HTML, and basic CSS.
-- **Optimal & Readable Code:** Variables and logic are standard, human-written, and easy to understand.
-- **Timeline Consideration:** Project structured cleanly to meet standard assignment constraints without over-engineering.
