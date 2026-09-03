@@ -35,8 +35,12 @@ public class LeaveController {
     }
 
     @PostMapping("/process/{requestId}")
-    public ResponseEntity<?> processLeave(@PathVariable Long requestId, @RequestBody Map<String, String> payload) {
+    public ResponseEntity<?> processLeave(@PathVariable Long requestId, @RequestBody Map<String, String> payload, @RequestHeader(value = "X-User-Id", required = false) Long headerUserId) {
         try {
+            if (headerUserId == null) throw new RuntimeException("Unauthorized: Missing user context");
+            User requestUser = userService.getUserById(headerUserId);
+            if (requestUser == null || !"HR".equals(requestUser.getRole())) throw new RuntimeException("Unauthorized: Only HR can process leaves");
+
             String status = payload.get("status");
             LeaveRequest request = leaveService.processLeave(requestId, status);
             return ResponseEntity.ok(request);
@@ -51,7 +55,11 @@ public class LeaveController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<LeaveRequest>> getAllLeaves() {
+    public ResponseEntity<List<LeaveRequest>> getAllLeaves(@RequestHeader(value = "X-User-Id", required = false) Long headerUserId) {
+        if (headerUserId == null) throw new RuntimeException("Unauthorized");
+        User requestUser = userService.getUserById(headerUserId);
+        if (requestUser == null || !"HR".equals(requestUser.getRole())) throw new RuntimeException("Unauthorized");
+        
         return ResponseEntity.ok(leaveService.getAllLeaves());
     }
 }

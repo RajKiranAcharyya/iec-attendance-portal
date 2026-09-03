@@ -46,7 +46,14 @@ public class AttendanceController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<AttendanceLog>> getAllAttendance() {
+    public ResponseEntity<List<AttendanceLog>> getAllAttendance(@RequestHeader(value = "X-User-Id", required = false) Long headerUserId) {
+        if (headerUserId == null) {
+            throw new RuntimeException("Unauthorized: Missing user context in header");
+        }
+        User requestUser = userService.getUserById(headerUserId);
+        if (requestUser == null || !"HR".equals(requestUser.getRole())) {
+            throw new RuntimeException("Unauthorized: Only HR can access this endpoint");
+        }
         return ResponseEntity.ok(attendanceService.getAllAttendance());
     }
 }

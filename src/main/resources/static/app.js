@@ -180,9 +180,12 @@ if (leaveForm) {
 
 // --- HR Dashboard Logic ---
 async function loadHRData() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const headers = { 'X-User-Id': user.id };
+
     // Load all employees
     try {
-        const res = await fetch(`${API_URL}/auth/employees`);
+        const res = await fetch(`${API_URL}/auth/employees`, { headers });
         if (res.ok) {
             const emps = await res.json();
             const tbody = document.querySelector('#hr-emp-table tbody');
@@ -202,7 +205,7 @@ async function loadHRData() {
 
     // Load all attendance
     try {
-        const res = await fetch(`${API_URL}/attendance/all`);
+        const res = await fetch(`${API_URL}/attendance/all`, { headers });
         if (res.ok) {
             const logs = await res.json();
             const tbody = document.querySelector('#hr-att-table tbody');
@@ -223,7 +226,7 @@ async function loadHRData() {
 
     // Load all leave requests
     try {
-        const res = await fetch(`${API_URL}/leave/all`);
+        const res = await fetch(`${API_URL}/leave/all`, { headers });
         if (res.ok) {
             const leaves = await res.json();
             const tbody = document.querySelector('#hr-leave-table tbody');
@@ -250,10 +253,14 @@ async function loadHRData() {
 }
 
 async function processLeave(requestId, status) {
+    const user = JSON.parse(localStorage.getItem('user'));
     try {
         const res = await fetch(`${API_URL}/leave/process/${requestId}`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'X-User-Id': user.id
+            },
             body: JSON.stringify({ status })
         });
         if (res.ok) {

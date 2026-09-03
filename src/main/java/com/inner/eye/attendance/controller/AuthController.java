@@ -35,7 +35,11 @@ public class AuthController {
     }
     
     @GetMapping("/employees")
-    public ResponseEntity<List<User>> getAllEmployees() {
+    public ResponseEntity<List<User>> getAllEmployees(@RequestHeader(value = "X-User-Id", required = false) Long headerUserId) {
+        if (headerUserId == null) throw new RuntimeException("Unauthorized");
+        User requestUser = userService.getUserById(headerUserId);
+        if (requestUser == null || !"HR".equals(requestUser.getRole())) throw new RuntimeException("Unauthorized");
+
         return ResponseEntity.ok(userService.getAllEmployees());
     }
 }
