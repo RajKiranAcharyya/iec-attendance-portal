@@ -5,6 +5,7 @@ import com.inner.eye.attendance.model.User;
 import com.inner.eye.attendance.repository.AttendanceLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class AttendanceService {
 
     @Autowired
