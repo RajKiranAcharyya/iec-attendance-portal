@@ -29,7 +29,7 @@ public class AttendanceService {
         AttendanceLog log = new AttendanceLog();
         log.setUser(user);
         log.setDate(today);
-        log.setCheckInTime(LocalTime.now());
+        log.setCheckInTime(LocalTime.now()); // fix this timezone issue later
         
         return attendanceLogRepository.save(log);
     }

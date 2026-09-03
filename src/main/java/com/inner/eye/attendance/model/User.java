@@ -1,6 +1,9 @@
 package com.inner.eye.attendance.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -10,19 +13,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required")
     @Column(nullable = false)
     private String name;
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Please provide a valid email")
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @NotBlank(message = "Password is required")
+    @Column(nullable = false, length = 255)
     private String password;
 
     @Column(nullable = false)
-    private String role; // "EMPLOYEE" or "HR"
+    private String role;
     
-    // total annual leaves available
     private int leaveBalance = 20;
 
     public User() {}
@@ -45,3 +52,4 @@ public class User {
     public int getLeaveBalance() { return leaveBalance; }
     public void setLeaveBalance(int leaveBalance) { this.leaveBalance = leaveBalance; }
 }
+

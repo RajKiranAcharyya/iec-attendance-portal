@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/attendance")
@@ -23,28 +22,22 @@ public class AttendanceController {
 
     @PostMapping("/check-in/{userId}")
     public ResponseEntity<?> checkIn(@PathVariable Long userId) {
-        try {
-            User user = userService.getUserById(userId);
-            if (user == null) return ResponseEntity.badRequest().body(Map.of("error", "User not found"));
-            
-            AttendanceLog log = attendanceService.checkIn(user);
-            return ResponseEntity.ok(log);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        User user = userService.getUserById(userId);
+        if (user == null) {
+            throw new RuntimeException("User not found");
         }
+        AttendanceLog log = attendanceService.checkIn(user);
+        return ResponseEntity.ok(log);
     }
 
     @PostMapping("/check-out/{userId}")
     public ResponseEntity<?> checkOut(@PathVariable Long userId) {
-        try {
-            User user = userService.getUserById(userId);
-            if (user == null) return ResponseEntity.badRequest().body(Map.of("error", "User not found"));
-            
-            AttendanceLog log = attendanceService.checkOut(user);
-            return ResponseEntity.ok(log);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        User user = userService.getUserById(userId);
+        if (user == null) {
+            throw new RuntimeException("User not found");
         }
+        AttendanceLog log = attendanceService.checkOut(user);
+        return ResponseEntity.ok(log);
     }
 
     @GetMapping("/user/{userId}")
