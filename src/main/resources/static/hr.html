@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <h2>HR Dashboard</h2>
+            <div>
+                <span id="hr-name-display"></span>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3>All Employees</h3>
+            <table id="hr-emp-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Leave Balance</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="panel">
+            <h3>All Attendance Records</h3>
+            <table id="hr-att-table">
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Date</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th>Hours Worked</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="panel">
+            <h3>Pending Leave Requests</h3>
+            <table id="hr-leave-table">
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Days</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script>
+        // Check session on load
+        window.onload = () => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (!user || user.role !== "HR") {
+                window.location.href = "index.html";
+                return;
+            }
+            document.getElementById("hr-name-display").innerText = "Welcome, " + user.name;
+            loadHRData();
+        };
+    </script>
+</body>
+</html>
