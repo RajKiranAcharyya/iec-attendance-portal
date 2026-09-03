@@ -8,6 +8,10 @@ if (loginForm) {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
         const errorElem = document.getElementById('login-error');
+        const btn = loginForm.querySelector('button[type="submit"]');
+        const originalText = btn.innerText;
+        btn.innerText = 'Logging in...';
+        btn.disabled = true;
         
         try {
             const res = await fetch(`${API_URL}/auth/login`, {
@@ -16,7 +20,6 @@ if (loginForm) {
                 body: JSON.stringify({ email, password })
             });
             const data = await res.json();
-            console.log("data received", data);
             
             if (res.ok) {
                 localStorage.setItem('user', JSON.stringify(data));
@@ -30,6 +33,9 @@ if (loginForm) {
             }
         } catch (err) {
             errorElem.innerText = 'Server error';
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
         }
     });
 }
@@ -44,6 +50,10 @@ if (registerForm) {
         const role = document.getElementById('reg-role').value;
         const errorElem = document.getElementById('reg-error');
         const successElem = document.getElementById('reg-success');
+        const btn = registerForm.querySelector('button[type="submit"]');
+        const originalText = btn.innerText;
+        btn.innerText = 'Registering...';
+        btn.disabled = true;
         
         try {
             const res = await fetch(`${API_URL}/auth/register`, {
@@ -63,6 +73,9 @@ if (registerForm) {
             }
         } catch (err) {
             errorElem.innerText = 'Server error';
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
         }
     });
 }
